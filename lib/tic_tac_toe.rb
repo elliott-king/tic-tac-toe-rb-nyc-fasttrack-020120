@@ -71,6 +71,14 @@ def valid_move?(board, index)
   !position_taken(board, index) && index > 0 && index < board.size
 end
 
+# TODO: should infer player
+def move(board, i, player="X")
+  # if valid_move?(board, i)
+    board[i] = player
+  # end
+  return board
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   i = gets.strip
