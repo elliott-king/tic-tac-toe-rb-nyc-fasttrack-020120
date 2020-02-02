@@ -101,12 +101,12 @@ def move(board, i)
 end
 
 def turn(board)
-  puts "Please enter 1-9:"
+  puts "Please enter 1-9 for player #{current_player(board)}:"
   i = gets.strip
   # ask for input after failed validation
   i = input_to_index(i)
   while !valid_move?(board, i)
-    puts "Please enter 1-9:"
+    puts "Please enter 1-9 for player #{current_player(board)}:"
     i = gets.strip
     # ask for input after failed validation
     i = input_to_index(i)
@@ -116,4 +116,12 @@ def turn(board)
 end
 
 def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won(board)
+    puts "Congratulations #{winner(board)}!"
+  else
+    puts "Cat's Game!"
+  end
 end
