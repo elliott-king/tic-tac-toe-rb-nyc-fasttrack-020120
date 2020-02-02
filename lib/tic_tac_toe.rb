@@ -70,3 +70,18 @@ end
 def valid_move?(board, index)
   !position_taken(board, index) && index > 0 && index < board.size
 end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  i = gets.strip
+  # ask for input after failed validation
+  i = input_to_index(i)
+  while !valid_move?(board, i)
+    puts "Please enter 1-9:"
+    i = gets.strip
+    # ask for input after failed validation
+    i = input_to_index(i)
+  end
+  move(board, i)
+  display_board(board)
+end
