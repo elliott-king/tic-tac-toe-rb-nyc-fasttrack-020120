@@ -71,10 +71,31 @@ def valid_move?(board, index)
   !position_taken(board, index) && index > 0 && index < board.size
 end
 
+
+
+def turn_count(board)
+  t = 0
+  board.each do | space |
+    if space == 'X' || space == 'O'
+      t +=1
+    end
+  end
+  t
+end
+
+def current_player(board)
+  if turn_count(board) % 2 == 1
+    'O'
+  else
+    'X'
+  end
+end
+
+
 # TODO: should infer player
-def move(board, i, player="X")
+def move(board, i)
   # if valid_move?(board, i)
-    board[i] = player
+    board[i] = current_player(board)
   # end
   return board
 end
@@ -92,4 +113,7 @@ def turn(board)
   end
   move(board, i)
   display_board(board)
+end
+
+def play(board)
 end
