@@ -93,9 +93,9 @@ end
 
 
 # TODO: should infer player
-def move(board, i)
+def move(board, i, player)
   # if valid_move?(board, i)
-    board[i] = current_player(board)
+  board[i] = player
   # end
   return board
 end
@@ -111,7 +111,7 @@ def turn(board)
     # ask for input after failed validation
     i = input_to_index(i)
   end
-  move(board, i)
+  move(board, i, current_player(board))
   display_board(board)
 end
 
